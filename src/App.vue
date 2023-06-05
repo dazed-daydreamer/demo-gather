@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import HelloWorld from './components/HelloWorld.vue'
-import LeftMenu from './components/basic/LeftMenu.vue'
+import LeftMenu from '@/components/basic/LeftMenu.vue'
 </script>
 
 <template>
@@ -10,7 +10,9 @@ import LeftMenu from './components/basic/LeftMenu.vue'
     </el-aside>
     <el-container>
       <el-header>Header</el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
