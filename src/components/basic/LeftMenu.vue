@@ -3,9 +3,7 @@
   <el-menu>
     <el-menu-item index="1">
       <template #title>
-        <!-- <div class="iconfont icon-zhuye"></div> -->
         <el-icon class="iconfont icon-zhuye"></el-icon>
-        <!-- <span>Navigator One</span> -->
       </template>
     </el-menu-item>
     <el-menu-item index="2">
@@ -17,6 +15,7 @@
 </template>
 <style lang="scss" scoped>
 .el-menu {
+  height: 100vh;
   .el-menu-item {
     display: flex;
     align-items: center;

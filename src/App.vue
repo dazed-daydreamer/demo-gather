@@ -5,8 +5,8 @@ import LeftMenu from '@/components/basic/LeftMenu.vue'
 
 <template>
   <el-container class="h-screen">
-    <el-aside width="80px">
-      <left-menu></left-menu>
+    <el-aside width="60px">
+      <LeftMenu></LeftMenu>
     </el-aside>
     <el-container>
       <el-header>Header</el-header>

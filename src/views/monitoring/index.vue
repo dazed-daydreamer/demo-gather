@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'HomeEcharts'
+  name: 'Monitoring'
 })
 </script>
 <template>
-  <div>我是大数据</div>
+  <div></div>
 </template>
 <style lang="scss" scoped></style>
