@@ -1,12 +1,12 @@
 <script setup lang="ts"></script>
 <template>
-  <el-menu>
-    <el-menu-item index="1">
+  <el-menu router default-active="/">
+    <el-menu-item index="/">
       <template #title>
         <el-icon class="iconfont icon-zhuye"></el-icon>
       </template>
     </el-menu-item>
-    <el-menu-item index="2">
+    <el-menu-item index="/monitoring">
       <template #title>
         <el-icon> <i-ep-expand /></el-icon>
       </template>

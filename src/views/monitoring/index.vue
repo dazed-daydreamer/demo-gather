@@ -4,6 +4,6 @@ defineOptions({
 })
 </script>
 <template>
-  <div></div>
+  <div>Monitoring</div>
 </template>
 <style lang="scss" scoped></style>
