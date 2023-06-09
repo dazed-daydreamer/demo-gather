@@ -3,7 +3,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
@@ -12,19 +12,16 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "noEmit": true,
-    "types": ["element-plus/global","./types/auto-imports.d.ts"],
-    "typeRoots": [
-      "/node_modules/@types",
-      "/types"
-    ],
+    "typeRoots": ["/node_modules/@types", "/types"],
     "paths": {
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
       "@/views/*": ["./src/views/*"],
       "@/assets/*": ["./src/assets/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-    },
+      "@/hooks/*": ["./src/hooks/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/*.d.ts"],
+  "exclude": ["node_modules/**", "dist/**"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
