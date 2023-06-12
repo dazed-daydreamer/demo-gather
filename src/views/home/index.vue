@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import CustomEchart from '@/components/basic/CustomEchart.vue'
 import _ from 'lodash'
 defineOptions({

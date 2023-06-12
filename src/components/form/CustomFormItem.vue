@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps({
   span: {
     type: Number,
@@ -19,13 +19,17 @@ defineProps({
   editEvents: {
     type: Object,
     default: () => ({})
+  },
+  prop: {
+    type: String,
+    default: ''
   }
 })
 </script>
 
 <template>
   <el-col :span="span">
-    <el-form-item :label="label">
+    <el-form-item :label="label" :prop="prop">
       <component :is="editName" v-bind="editProps"></component>
     </el-form-item>
   </el-col>

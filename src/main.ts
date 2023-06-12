@@ -7,7 +7,6 @@ import registerComponents from './common/register-components'
 
 import './assets/style/index.css'
 import './assets/iconFont/index.css'
-import 'element-plus/theme-chalk/dark/css-vars.css'
 
 const app = createApp(App)
 
