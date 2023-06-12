@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 // import HelloWorld from './components/HelloWorld.vue'
 import LeftMenu from '@/components/basic/LeftMenu.vue'
 </script>

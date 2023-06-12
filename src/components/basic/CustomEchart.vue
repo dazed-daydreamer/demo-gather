@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import useCommon from '@/hooks/common'
 
 const { getGlobalProperties } = useCommon()
@@ -30,9 +30,6 @@ function initChart() {
   chartContent = Object.assign(echarts.init(chartRef.value), chartContent)
   if (chartContent && prop.option) {
     const option = { ...prop.option }
-    if (!option.backgroundColor) {
-      option.backgroundColor = '#242424'
-    }
     chartContent.setOption(option)
   }
 }

@@ -1,11 +1,13 @@
-<script setup lang="ts">
-import { ElForm } from 'element-plus'
+<script lang="ts" setup>
+import type { ElForm } from 'element-plus'
 
-const form = reactive({})
 const formRef = ref<InstanceType<typeof ElForm> | null>(null)
+const form = reactive({
+  name: ''
+})
 
-function validate(callback: () => void) {
-  formRef.value?.validate(callback)
+async function validate() {
+  return await formRef.value?.validate()
 }
 
 function resetFields() {
@@ -24,7 +26,10 @@ defineExpose({
 </script>
 
 <template>
-  <el-form ref="formRef" :model="form" v-bind="$attrs">
+  <el-form ref="formRef" v-model="form" v-bind="$attrs">
+    <el-form-item label="Activity name" prop="name">
+      <el-input v-model="form.name" />
+    </el-form-item>
     <el-row>
       <slot></slot>
     </el-row>
