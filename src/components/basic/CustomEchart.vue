@@ -49,6 +49,7 @@ defineExpose({
   resize
 })
 </script>
+
 <template>
   <el-col :span="span">
     <div ref="chartRef" :style="{ width: width, height: height }"></div>

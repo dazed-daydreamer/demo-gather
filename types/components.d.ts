@@ -10,11 +10,16 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CustomEchart: typeof import('./../src/components/basic/CustomEchart.vue')['default']
+    CustomForm: typeof import('./../src/components/form/CustomForm.vue')['default']
+    CustomFormItem: typeof import('./../src/components/form/CustomFormItem.vue')['default']
+    CustomInput: typeof import('./../src/components/form/CustomInput.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
