@@ -1,20 +1,17 @@
 <script lang="ts" setup>
-import type { ElForm } from 'element-plus'
+import type { FormInstance } from 'element-plus'
 
-const formRef = ref<InstanceType<typeof ElForm> | null>(null)
-const form = reactive({
-  name: ''
-})
+const formRef = ref<FormInstance | null>(null)
 
-async function validate() {
+const validate = async () => {
   return await formRef.value?.validate()
 }
 
-function resetFields() {
+const resetFields = () => {
   formRef.value?.resetFields()
 }
 
-function clearValidate() {
+const clearValidate = () => {
   formRef.value?.clearValidate()
 }
 
@@ -26,11 +23,8 @@ defineExpose({
 </script>
 
 <template>
-  <el-form ref="formRef" v-model="form" v-bind="$attrs">
-    <el-form-item label="Activity name" prop="name">
-      <el-input v-model="form.name" />
-    </el-form-item>
-    <el-row>
+  <el-form ref="formRef" v-bind="$attrs">
+    <el-row :gutter="10">
       <slot></slot>
     </el-row>
   </el-form>

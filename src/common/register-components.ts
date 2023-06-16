@@ -12,5 +12,21 @@ export default {
       'CInput',
       defineAsyncComponent(() => import('../components/form/CustomInput.vue'))
     )
+    app.component(
+      'CSelect',
+      defineAsyncComponent(() => import('../components/form/CustomSelect.vue'))
+    )
+    app.component(
+      'CDatePicker',
+      defineAsyncComponent(() => import('../components/form/CustomDatePicker.vue'))
+    )
+    app.component(
+      'BillText',
+      defineAsyncComponent(() => import('../components/basic/BillText.vue'))
+    )
+    app.component(
+      'CInputNumber',
+      defineAsyncComponent(() => import('../components/form/CustomInputNumber.vue'))
+    )
   }
 }

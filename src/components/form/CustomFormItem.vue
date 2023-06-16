@@ -8,17 +8,17 @@ defineProps({
     type: String,
     default: ''
   },
+  labelWidth: {
+    type: String,
+    default: '80px'
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
   editName: {
     type: String,
     default: ''
-  },
-  editProps: {
-    type: Object,
-    default: () => ({})
-  },
-  editEvents: {
-    type: Object,
-    default: () => ({})
   },
   prop: {
     type: String,
@@ -29,8 +29,8 @@ defineProps({
 
 <template>
   <el-col :span="span">
-    <el-form-item :label="label" :prop="prop">
-      <component :is="editName" v-bind="editProps"></component>
+    <el-form-item :label="label" :label-width="labelWidth" :prop="prop">
+      <component :is="editName" v-bind="$attrs"></component>
     </el-form-item>
   </el-col>
 </template>

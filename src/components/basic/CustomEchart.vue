@@ -21,10 +21,11 @@ const prop = defineProps({
     default: 'auto'
   }
 })
+
 const chartRef = ref<HTMLElement | null>(null)
 let chartContent = reactive<any>(null)
 
-function initChart() {
+const initChart = () => {
   if (!chartRef.value) return
   const echarts = getGlobalProperties('$echarts')
   chartContent = Object.assign(echarts.init(chartRef.value), chartContent)
@@ -34,7 +35,7 @@ function initChart() {
   }
 }
 
-function resize() {
+const resize = () => {
   chartContent.resize()
 }
 

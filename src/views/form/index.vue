@@ -38,6 +38,11 @@ const onFormConfirm = async () => {
 </script>
 
 <template>
+  <bill-text>
+    <template #right-slot>
+      <el-button type="primary" @click="onFormConfirm">提交</el-button>
+    </template>
+  </bill-text>
   <c-form :rules="rules" ref="formRef" :model="form">
     <c-form-item edit-name="CInput" label="活动名称" prop="name" v-model="form.name"></c-form-item>
     <c-form-item edit-name="CSelect" label="活动区域" prop="region" v-model="form.region" :options="regionList"></c-form-item>
