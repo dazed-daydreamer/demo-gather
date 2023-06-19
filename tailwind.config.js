@@ -4,5 +4,14 @@ export default {
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [
+    function ({ addBase }) {
+      // 解决element-ui的按钮背景色问题
+      addBase({
+        '.el-button': {
+          'background-color': 'var(--el-button-bg-color,var(--el-color-white))'
+        }
+      })
+    }
+  ]
 }

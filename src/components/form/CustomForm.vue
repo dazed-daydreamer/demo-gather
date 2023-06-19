@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus'
 
+const attrs = useAttrs()
+
+provide('form', attrs.modelValue)
+
 const formRef = ref<FormInstance | null>(null)
 
 const validate = async () => {

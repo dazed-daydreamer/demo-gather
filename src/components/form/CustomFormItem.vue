@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+interface Form {
+  [key: string]: any
+}
+
+const form = inject<Form>('form', () => ({}))
+
 defineProps({
   span: {
     type: Number,
@@ -30,7 +36,7 @@ defineProps({
 <template>
   <el-col :span="span">
     <el-form-item :label="label" :label-width="labelWidth" :prop="prop">
-      <component :is="editName" v-bind="$attrs"></component>
+      <component :is="editName" v-bind="$attrs" v-model="form[prop]"></component>
     </el-form-item>
   </el-col>
 </template>
