@@ -1,14 +1,10 @@
 <script lang="ts" setup>
-const regionList = [
-  {
-    itemValue: '1',
-    itemName: '区域一'
-  },
-  {
-    itemValue: '2',
-    itemName: '区域二'
+defineProps({
+  regionList: {
+    type: Array,
+    default: () => []
   }
-]
+})
 </script>
 
 <template>
