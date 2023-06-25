@@ -63,19 +63,19 @@ const topOneOption = {
 <template>
   <div>
     <el-row>
-      <CustomEchart ref="chartRefOne" :option="topOneOption" height="300px" :span="8"></CustomEchart>
-      <CustomEchart ref="chartRefTwo" :option="topOneOption" height="300px" :span="8"></CustomEchart>
-      <CustomEchart ref="chartRefThree" :option="topOneOption" height="300px" :span="8"></CustomEchart>
+      <custom-echart ref="chartRefOne" :option="topOneOption" height="300px" :span="8"></custom-echart>
+      <custom-echart ref="chartRefTwo" :option="topOneOption" height="300px" :span="8"></custom-echart>
+      <custom-echart ref="chartRefThree" :option="topOneOption" height="300px" :span="8"></custom-echart>
     </el-row>
     <el-row>
-      <CustomEchart ref="chartRefFour" :option="topOneOption" height="300px" :span="8"></CustomEchart>
-      <CustomEchart ref="chartRefFive" :option="topOneOption" height="300px" :span="8"></CustomEchart>
-      <CustomEchart ref="chartRefSix" :option="topOneOption" height="300px" :span="8"></CustomEchart>
+      <custom-echart ref="chartRefFour" :option="topOneOption" height="300px" :span="8"></custom-echart>
+      <custom-echart ref="chartRefFive" :option="topOneOption" height="300px" :span="8"></custom-echart>
+      <custom-echart ref="chartRefSix" :option="topOneOption" height="300px" :span="8"></custom-echart>
     </el-row>
     <el-row>
-      <CustomEchart ref="chartRefSeven" :option="topOneOption" height="300px" :span="8"></CustomEchart>
-      <CustomEchart ref="chartRefEight" :option="topOneOption" height="300px" :span="8"></CustomEchart>
-      <CustomEchart ref="chartRefNine" :option="topOneOption" height="300px" :span="8"></CustomEchart>
+      <custom-echart ref="chartRefSeven" :option="topOneOption" height="300px" :span="8"></custom-echart>
+      <custom-echart ref="chartRefEight" :option="topOneOption" height="300px" :span="8"></custom-echart>
+      <custom-echart ref="chartRefNine" :option="topOneOption" height="300px" :span="8"></custom-echart>
     </el-row>
   </div>
 </template>

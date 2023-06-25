@@ -3,6 +3,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = []
 
 const viewsFile = import.meta.glob('../views/**/*.vue')
+
+// 根据文件自动注册路由
 for (const path in viewsFile) {
   const reg = /..\/views\/(.*)\/index\.vue/g
   const isMatch = path.match(reg)

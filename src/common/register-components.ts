@@ -8,7 +8,9 @@ import BillText from '../components/basic/BillText.vue'
 import CustomQueryHeader from '../components/basic/CustomQueryHeader.vue'
 import CustomTable from '../components/basic/CustomTable.vue'
 import CustomPagination from '@/components/basic/CustomPagination.vue'
-import PageContent from '@/components/basic/PageContent.vue'
+import CustomQueryPage from '@/components/basic/CustomQueryPage.vue'
+import CustomToolbar from '@/components/basic/CustomToolbar.vue'
+import CustomAddPage from '@/components/basic/CustomAddPage.vue'
 
 export default {
   install(app: any) {
@@ -22,6 +24,8 @@ export default {
     app.component('CQueryHeader', CustomQueryHeader)
     app.component('CTable', CustomTable)
     app.component('CPagination', CustomPagination)
-    app.component('PageContent', PageContent)
+    app.component('CQueryPage', CustomQueryPage)
+    app.component('CToolbar', CustomToolbar)
+    app.component('CAddPage', CustomAddPage)
   }
 }

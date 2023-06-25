@@ -46,6 +46,10 @@
     "template-tag-spacing": [1, "always"],
     "vue/multi-word-component-names": 0,
     "no-undef": 0,
-    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-explicit-any": 0,
+    // 属性名称驼峰转为中划线形式
+    "vue/attribute-hyphenation": ["error", "always"],
+    // 组件名称驼峰转为中划线形式h
+    "vue/component-name-in-template-casing": ["error", "kebab-case"]
   }
 }

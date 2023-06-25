@@ -2,8 +2,7 @@
 import type { FormInstance } from 'element-plus'
 
 const attrs = useAttrs()
-
-provide('form', attrs.modelValue)
+provide('form', attrs.model)
 
 const formRef = ref<FormInstance | null>(null)
 

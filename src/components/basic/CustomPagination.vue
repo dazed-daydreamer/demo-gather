@@ -19,7 +19,7 @@ defineProps({
   <el-pagination
     layout="total, sizes, prev, pager, next, jumper"
     :total="total"
-    :pageSizes="pageSizes"
+    :page-sizes="pageSizes"
     hide-on-single-page
     class="mt-[20px] flex justify-end flex-shrink-0"
     background

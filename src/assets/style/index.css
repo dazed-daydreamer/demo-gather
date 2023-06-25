@@ -16,3 +16,6 @@
 #app {
   height: 100vh;
 }
+.el-button:not(.is-text) {
+  min-width: 78px;
+}

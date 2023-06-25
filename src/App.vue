@@ -8,11 +8,11 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
   <el-config-provider :locale="zhCn" size="large">
     <el-container class="h-screen">
       <el-aside width="60px">
-        <LeftMenu></LeftMenu>
+        <left-menu></left-menu>
       </el-aside>
       <el-container>
         <el-header class="p-0">
-          <PageHeader></PageHeader>
+          <page-header></page-header>
         </el-header>
         <el-main class="p-0">
           <router-view></router-view>

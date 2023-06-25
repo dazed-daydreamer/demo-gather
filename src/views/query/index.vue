@@ -7,6 +7,7 @@ const initForm = () => ({
   date: '',
   delivery: ''
 })
+const router = useRouter()
 const regionList = [
   {
     itemValue: '1',
@@ -20,11 +21,13 @@ const regionList = [
 const tableColumn = [
   {
     prop: 'name',
-    label: '活动名称'
+    label: '活动名称',
+    minWidth: '100'
   },
   {
     prop: 'region',
     label: '活动区域',
+    minWidth: '100',
     formatter: (row: any) => {
       return regionList.filter((item) => item.itemValue === row.region)[0]?.itemName || ''
     }
@@ -32,14 +35,17 @@ const tableColumn = [
   {
     prop: 'delivery',
     label: '即时配送',
+    minWidth: '100',
     dict: 'usbale'
   },
   {
     prop: 'startData',
+    minWidth: '120',
     label: '开始时间'
   },
   {
     prop: 'endData',
+    minWidth: '120',
     label: '结束时间'
   },
   {
@@ -52,7 +58,6 @@ const tableColumn = [
         tip: '编辑',
         listener: 'onEdit',
         isDisabled: (record: any) => record.name === '活动名称'
-        // isShow: (record) => this.btnAuth['visitAllotCustomer.delete']
       },
       {
         tip: '删除',
@@ -76,35 +81,55 @@ const tableData = ref([
   }
 ])
 
-const onQueryList = async () => {
+const clickQuery = async () => {
   ElMessage.success('查询成功')
 }
 
-const onReset = () => {
+const clickReset = () => {
   Object.assign(form, initForm())
   currentPage.value = 1
   ElMessage.success('重置成功')
 }
+
+const clickAdd = () => {
+  router.push({
+    path: '/form'
+  })
+}
+
+const addConfig = reactive({
+  isShow: true,
+  callBack: clickAdd
+})
+
+const exportConfig = reactive({
+  isShow: true
+})
+
+const importConfig = reactive({
+  isShow: true
+})
 </script>
 
 <template>
-  <PageContent>
+  <c-query-page>
     <template #header>
       <CQueryHeader>
-        <template v-slot:right-slot>
-          <el-button type="primary" @click="onQueryList">查询</el-button>
-          <el-button @click="onReset">重置</el-button>
+        <template #right-slot>
+          <el-button type="primary" @click="clickQuery">查询</el-button>
+          <el-button @click="clickReset">重置</el-button>
         </template>
       </CQueryHeader>
-      <PageHeaderForm v-model="form" :regionList="regionList"> </PageHeaderForm>
+      <page-header-form :model="form" :region-list="regionList"> </page-header-form>
+    </template>
+    <template #toolbar>
+      <CToolbar :add-config="addConfig" :export-config="exportConfig" :import-config="importConfig"></CToolbar>
     </template>
     <template #main>
-      <CTable v-model:current-page="currentPage" v-model:page-size="pageSize" :tableColumn="tableColumn" :data="tableData">
-        <!-- <template v-slot:name> 测试</template> -->
-      </CTable>
+      <CTable v-model:current-page="currentPage" v-model:page-size="pageSize" :table-column="tableColumn" :data="tableData"> </CTable>
       <CPagination></CPagination>
     </template>
-  </PageContent>
+  </c-query-page>
 </template>
 
 <style lang="scss" scoped></style>

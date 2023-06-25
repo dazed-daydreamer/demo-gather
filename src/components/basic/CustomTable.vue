@@ -93,7 +93,7 @@ defineExpose({
               v-if="btnItem.isConfirm"
               @confirm="onListener(btnItem.listener, scope.row, scope.$index)"
             >
-              <template v-slot:reference>
+              <template #reference>
                 <el-button
                   type="primary"
                   text
@@ -126,21 +126,13 @@ defineExpose({
     background-color: #f5f7fa !important;
     color: #332f2fd9;
     padding: 0;
-
-    .cell {
-      height: 40px;
-      line-height: 40px;
-    }
+    box-sizing: content-box;
   }
 }
 
 :deep(.custom-table-row) {
   td {
     padding: 0;
-    .cell {
-      height: 40px;
-      line-height: 40px;
-    }
   }
 }
 

@@ -15,6 +15,10 @@ defineProps({
   placeholder: {
     type: String,
     default: '请选择'
+  },
+  clearable: {
+    type: Boolean,
+    default: true
   }
 })
 </script>
@@ -24,10 +28,11 @@ defineProps({
     <el-date-picker
       style="width: 100%"
       v-bind="$attrs"
-      :valueFormat="valueFormat"
-      :startPlaceholder="startPlaceholder"
-      :endPlaceholder="endPlaceholder"
+      :value-format="valueFormat"
+      :start-placeholder="startPlaceholder"
+      :end-placeholder="endPlaceholder"
       :placeholder="placeholder"
+      :clearable="clearable"
     />
   </div>
 </template>

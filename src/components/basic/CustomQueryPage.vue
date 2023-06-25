@@ -1,7 +1,14 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps({
+  isAddButton: {
+    type: Boolean,
+    default: true
+  }
+})
+</script>
 
 <template>
-  <div class="page-content flex flex-col">
+  <div class="custom-query-page flex flex-col">
     <slot name="header"></slot>
     <slot name="toolbar"></slot>
     <div class="flex-1 flex flex-col">
@@ -12,7 +19,7 @@
 </template>
 
 <style lang="scss" scoped>
-.page-content {
+.custom-query-page {
   padding: 20px;
   height: calc(100vh - 60px);
 }
