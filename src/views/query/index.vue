@@ -112,24 +112,25 @@ const importConfig = reactive({
 </script>
 
 <template>
-  <c-query-page>
+  <custom-query-page>
     <template #header>
-      <CQueryHeader>
+      <custom-query-header>
         <template #right-slot>
           <el-button type="primary" @click="clickQuery">查询</el-button>
           <el-button @click="clickReset">重置</el-button>
         </template>
-      </CQueryHeader>
+      </custom-query-header>
       <page-header-form :model="form" :region-list="regionList"> </page-header-form>
     </template>
     <template #toolbar>
-      <CToolbar :add-config="addConfig" :export-config="exportConfig" :import-config="importConfig"></CToolbar>
+      <custom-toolbar :add-config="addConfig" :export-config="exportConfig" :import-config="importConfig"></custom-toolbar>
     </template>
     <template #main>
-      <CTable v-model:current-page="currentPage" v-model:page-size="pageSize" :table-column="tableColumn" :data="tableData"> </CTable>
-      <CPagination></CPagination>
+      <custom-table v-model:current-page="currentPage" v-model:page-size="pageSize" :table-column="tableColumn" :data="tableData">
+      </custom-table>
+      <custom-pagination></custom-pagination>
     </template>
-  </c-query-page>
+  </custom-query-page>
 </template>
 
 <style lang="scss" scoped></style>

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import LeftMenu from '@/components/basic/LeftMenu.vue'
-import PageHeader from './components/basic/PageHeader.vue'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 </script>
 
@@ -12,7 +10,7 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
       </el-aside>
       <el-container>
         <el-header class="p-0">
-          <page-header></page-header>
+          <top-header></top-header>
         </el-header>
         <el-main class="p-0">
           <router-view></router-view>

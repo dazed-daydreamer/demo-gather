@@ -85,7 +85,7 @@ defineExpose({
       :key="index"
     >
       <template #default="scope">
-        <slot :name="item.prop" v-if="$slots[item.prop]"></slot>
+        <slot :name="item.prop" :row="scope.row" :index="scope.$index" v-if="$slots[item.prop]"></slot>
         <div v-if="item.prop === 'operate'" class="flex custom-table-operate">
           <div v-for="(btnItem, btnIndex) in filteredBtnList(item.btnList, scope.row, scope.$index)" :key="btnIndex" class="mr-[10px]">
             <el-popconfirm
@@ -124,15 +124,17 @@ defineExpose({
   th {
     height: 32px !important;
     background-color: #f5f7fa !important;
-    color: #332f2fd9;
+    color: #606266;
     padding: 0;
     box-sizing: content-box;
+    font-size: 13px;
   }
 }
 
 :deep(.custom-table-row) {
   td {
     padding: 0;
+    font-size: 13px;
   }
 }
 

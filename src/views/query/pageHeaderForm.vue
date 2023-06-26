@@ -8,12 +8,12 @@ defineProps({
 </script>
 
 <template>
-  <c-form>
-    <c-form-item edit-name="CInput" label="活动名称" prop="name"></c-form-item>
-    <c-form-item edit-name="CSelect" label="活动区域" prop="region" :options="regionList"></c-form-item>
-    <c-form-item edit-name="CDatePicker" label="活动时间" prop="date" type="monthrange"></c-form-item>
-    <c-form-item edit-name="CSelect" label="即时配送" prop="delivery" dict="usbale"></c-form-item>
-  </c-form>
+  <custom-form>
+    <custom-form-item edit-name="CustomInput" label="活动名称" prop="name"></custom-form-item>
+    <custom-form-item edit-name="CustomSelect" label="活动区域" prop="region" :options="regionList"></custom-form-item>
+    <custom-form-item edit-name="CustomDatePicker" label="活动时间" prop="date" type="monthrange"></custom-form-item>
+    <custom-form-item edit-name="CustomSelect" label="即时配送" prop="delivery" dict="usbale"></custom-form-item>
+  </custom-form>
 </template>
 
 <style lang="scss" scoped></style>

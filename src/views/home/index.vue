@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import CustomEchart from '@/components/basic/CustomEchart.vue'
+import type CustomEchart from '@/components/basic/CustomEchart.vue'
 import _ from 'lodash'
 defineOptions({
   name: 'Home'

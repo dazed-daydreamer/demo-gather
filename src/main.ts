@@ -5,8 +5,8 @@ import router from './router'
 import * as echarts from 'echarts'
 import registerComponents from './common/register-components'
 
-import './assets/style/index.css'
-import './assets/iconFont/index.css'
+import './assets/style/index.scss'
+import './assets/iconFont/index.scss'
 
 const app = createApp(App)
 

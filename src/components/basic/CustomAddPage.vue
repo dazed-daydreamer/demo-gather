@@ -2,6 +2,7 @@
 
 <template>
   <div class="custom-add-page">
+    <slot name="header-bar"></slot>
     <slot name="header"></slot>
     <slot name="main"></slot>
     <slot name="footer"></slot>

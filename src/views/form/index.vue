@@ -1,33 +1,19 @@
 <script lang="ts" setup>
-import type CustomForm from '@/components/form/CustomForm.vue'
-import type { FormRules } from 'element-plus'
+import PageHeaderForm from './pageHeaderForm.vue'
+import PageMainTable from './pageMainTable.vue'
 
-const rules = reactive<FormRules>({
-  name: [{ required: true, message: '请输入活动名称', trigger: 'change' }]
-})
-
-const formRef = ref<InstanceType<typeof CustomForm> | null>(null)
+const headerFormRef = ref<InstanceType<typeof PageHeaderForm> | null>(null)
 const form = reactive({
   name: '',
   region: '',
   date: '',
   delivery: '',
   desc: '',
-  price: ''
+  price: 0
 })
-const regionList = [
-  {
-    itemValue: '1',
-    itemName: '区域一'
-  },
-  {
-    itemValue: '2',
-    itemName: '区域二'
-  }
-]
 
 const onFormConfirm = async () => {
-  const valid = await formRef.value?.validate()
+  const valid = await headerFormRef.value?.formRef?.validate()
   if (valid) {
     ElMessage({
       message: '提交成功',
@@ -38,33 +24,21 @@ const onFormConfirm = async () => {
 </script>
 
 <template>
-  <c-add-page>
-    <template #header>
+  <custom-add-page>
+    <template #header-bar>
       <bill-text>
         <template #right-slot>
           <el-button type="primary" @click="onFormConfirm">提交</el-button>
         </template>
       </bill-text>
     </template>
-    <template #main>
-      <c-form :rules="rules" ref="formRef" :model="form">
-        <c-form-item edit-name="CInput" label="活动名称" prop="name"></c-form-item>
-        <c-form-item edit-name="CSelect" label="活动区域" prop="region" :options="regionList"></c-form-item>
-        <c-form-item edit-name="CDatePicker" label="活动时间" prop="date" type="monthrange"></c-form-item>
-        <c-form-item edit-name="CSelect" label="即时配送" prop="delivery" dict="usbale"></c-form-item>
-        <c-form-item edit-name="CInputNumber" label="活动价格" prop="price"></c-form-item>
-        <c-form-item
-          edit-name="CInput"
-          label="活动形式"
-          prop="desc"
-          :span="24"
-          type="textarea"
-          maxlength="30"
-          show-word-limit
-        ></c-form-item>
-      </c-form>
+    <template #header>
+      <page-header-form :model="form" ref="headerFormRef"></page-header-form>
     </template>
-  </c-add-page>
+    <template #main>
+      <page-main-table></page-main-table>
+    </template>
+  </custom-add-page>
 </template>
 
 <style lang="scss" scoped></style>
