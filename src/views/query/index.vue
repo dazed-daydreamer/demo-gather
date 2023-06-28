@@ -22,12 +22,12 @@ const tableColumn = [
   {
     prop: 'name',
     label: '活动名称',
-    minWidth: '100'
+    width: '130'
   },
   {
     prop: 'region',
     label: '活动区域',
-    minWidth: '100',
+    width: '130',
     formatter: (row: any) => {
       return regionList.filter((item) => item.itemValue === row.region)[0]?.itemName || ''
     }
@@ -35,17 +35,17 @@ const tableColumn = [
   {
     prop: 'delivery',
     label: '即时配送',
-    minWidth: '100',
+    width: '130',
     dict: 'usbale'
   },
   {
     prop: 'startData',
-    minWidth: '120',
+    minWidth: '150',
     label: '开始时间'
   },
   {
     prop: 'endData',
-    minWidth: '120',
+    minWidth: '150',
     label: '结束时间'
   },
   {
@@ -116,8 +116,8 @@ const importConfig = reactive({
     <template #header>
       <custom-query-header>
         <template #right-slot>
-          <el-button type="primary" @click="clickQuery">查询</el-button>
-          <el-button @click="clickReset">重置</el-button>
+          <custom-button type="primary" @click="clickQuery">查询</custom-button>
+          <custom-button @click="clickReset">重置</custom-button>
         </template>
       </custom-query-header>
       <page-header-form :model="form" :region-list="regionList"> </page-header-form>

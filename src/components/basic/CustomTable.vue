@@ -79,10 +79,12 @@ defineExpose({
       :prop="item.prop"
       :label="item.label"
       :width="item.width"
+      :min-width="item.minWidth"
       :fixed="item.fixed"
       :formatter="item.formatter"
       v-for="(item, index) in tableColumn"
       :key="index"
+      :show-overflow-tooltip="true"
     >
       <template #default="scope">
         <slot :name="item.prop" :row="scope.row" :index="scope.$index" v-if="$slots[item.prop]"></slot>
@@ -95,8 +97,9 @@ defineExpose({
             >
               <template #reference>
                 <el-button
+                  class="button-font-size"
                   type="primary"
-                  text
+                  link
                   :disabled="typeof btnItem.isDisabled === 'function' && btnItem.isDisabled(scope.row, scope.$index)"
                 >
                   {{ btnItem.tip }}
@@ -104,8 +107,9 @@ defineExpose({
               </template>
             </el-popconfirm>
             <el-button
+              class="button-font-size"
               type="primary"
-              text
+              link
               v-else
               :disabled="typeof btnItem.isDisabled === 'function' && btnItem.isDisabled(scope.row, scope.$index)"
               @click="onListener(btnItem.listener, scope.row, scope.$index)"
@@ -133,12 +137,13 @@ defineExpose({
 
 :deep(.custom-table-row) {
   td {
+    height: 40px;
     padding: 0;
     font-size: 13px;
   }
 }
 
-.custom-table-operate {
+.tom-table-operatcuse {
   .el-button {
     background-color: transparent !important;
     &:hover {
@@ -146,5 +151,9 @@ defineExpose({
     }
     padding: 0 5px;
   }
+}
+
+.button-font-size {
+  font-size: 13px;
 }
 </style>

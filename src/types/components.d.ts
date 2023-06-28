@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BillText: typeof import('./../components/basic/BillText.vue')['default']
     CustomAddPage: typeof import('./../components/basic/CustomAddPage.vue')['default']
+    CustomButton: typeof import('./../components/basic/CustomButton.vue')['default']
     CustomDatePicker: typeof import('./../components/form/CustomDatePicker.vue')['default']
     CustomEchart: typeof import('./../components/basic/CustomEchart.vue')['default']
     CustomForm: typeof import('./../components/form/CustomForm.vue')['default']

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ElButton, ElPopconfirm } from 'element-plus'
+
 const props = defineProps({
   data: {
     type: Array,
@@ -27,6 +29,31 @@ const props = defineProps({
 })
 
 const temTableColumn = computed(() => {
+  const columns = props.tableColumn.map((item: any) => {
+    if (Array.isArray(item.btnList) && item.btnList) {
+      item.cellRenderer = ({ rowData, rowIndex }: { rowData: any; rowIndex: number }) => {
+        return h(
+          'div',
+          {
+            class: 'flex justify-center'
+          },
+          item.btnList.map((btnItem: any) => {
+            return h(
+              'div',
+              {
+                style: {
+                  marginRight: '10px'
+                }
+              },
+              createBtnVnode(btnItem, rowData, rowIndex)
+            )
+          })
+        )
+      }
+    }
+    item.key = item.prop || item.dataKey
+    return item
+  })
   return [
     {
       key: 'index',
@@ -37,9 +64,50 @@ const temTableColumn = computed(() => {
         return h('div', rowIndex + 1)
       }
     },
-    ...props.tableColumn
+    ...columns
   ]
 })
+
+// 创建按钮节点
+const createBtnVnode = (btnItem: any, rowData: any, rowIndex: number) => {
+  let btnVnode = null
+  const basicBtnVnode = h(
+    ElButton,
+    {
+      style: {
+        marginLeft: '0px',
+        fontSize: '13px'
+      },
+      type: 'primary',
+      link: true
+    },
+    {
+      default: () => btnItem.tip
+    }
+  )
+  if (btnItem.isConfirm) {
+    btnVnode = h(
+      ElPopconfirm,
+      {
+        title: btnItem.hintTitle || '确定删除吗？',
+        onConfirm: () => {
+          btnItem.onClick && btnItem.onClick(rowData, rowIndex)
+        }
+      },
+      {
+        reference: () => basicBtnVnode
+      }
+    )
+  } else {
+    basicBtnVnode.props &&
+      (basicBtnVnode.props.onClick = () => {
+        console.log(rowData, rowIndex)
+        btnItem.onClick && btnItem.onClick(rowData, rowIndex)
+      })
+    btnVnode = basicBtnVnode
+  }
+  return btnVnode
+}
 </script>
 
 <template>
@@ -54,6 +122,7 @@ const temTableColumn = computed(() => {
           v-bind="$attrs"
           :header-height="headerHeight"
           :row-height="rowHeight"
+          fixed
         ></el-table-v2>
       </template>
     </el-auto-resizer>

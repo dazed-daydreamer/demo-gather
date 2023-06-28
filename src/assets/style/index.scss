@@ -18,10 +18,6 @@
   height: 100vh;
 }
 
-.el-button:not(.is-text) {
-  min-width: 78px;
-}
-
 /* 滚动条样式优化 */
 ::-webkit-scrollbar-track-piece {
   background-color: rgba(51, 112, 255, 0.04);
