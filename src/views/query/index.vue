@@ -56,13 +56,13 @@ const tableColumn = [
     btnList: [
       {
         tip: '编辑',
-        listener: 'onEdit',
-        isDisabled: (record: any) => record.name === '活动名称'
+        onClick: (row: any) => clickAdd(row)
+        // isDisabled: (row: any) => row.name === '活动名称'
       },
       {
         tip: '删除',
         isConfirm: true,
-        listener: 'onDelete'
+        onClick: (_: any, index: number) => clickDelete(index)
       }
     ]
   }
@@ -71,13 +71,14 @@ const tableColumn = [
 const currentPage = ref(1)
 const pageSize = ref(10)
 const form = reactive(initForm())
-const tableData = ref([
+const tableData = reactive([
   {
     name: '活动名称',
     region: '2',
     startData: '2021-09-01',
     endData: '2021-09-30',
-    delivery: '1'
+    delivery: '1',
+    id: 1
   }
 ])
 
@@ -91,10 +92,19 @@ const clickReset = () => {
   ElMessage.success('重置成功')
 }
 
-const clickAdd = () => {
+const clickAdd = (row?: any) => {
   router.push({
-    path: '/form'
+    path: '/form',
+    query: {
+      id: row?.id,
+      mode: row.id ? 'edit' : 'add'
+    }
   })
+}
+
+const clickDelete = (index: number) => {
+  tableData.splice(index, 1)
+  ElMessage.success('删除成功')
 }
 
 const addConfig = reactive({

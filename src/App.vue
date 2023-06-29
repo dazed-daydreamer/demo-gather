@@ -3,7 +3,7 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 </script>
 
 <template>
-  <el-config-provider :locale="zhCn" size="large">
+  <el-config-provider :locale="zhCn">
     <el-container class="h-screen">
       <el-aside width="60px">
         <left-menu></left-menu>

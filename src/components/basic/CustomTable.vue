@@ -38,10 +38,6 @@ const onRowClick = (row: object, column: object, event: Event) => {
   emit('row-click', row, column, event)
 }
 
-const onListener = (listenerName: string, row: any, index: number) => {
-  emit('on-listener', listenerName, row, index)
-}
-
 // 过滤按钮列表
 const filteredBtnList = (btnList: any[], row: any, index: number) => {
   return btnList.filter((btnItem) => {
@@ -93,7 +89,7 @@ defineExpose({
             <el-popconfirm
               :title="btnItem.hintTitle || '确定删除吗？'"
               v-if="btnItem.isConfirm"
-              @confirm="onListener(btnItem.listener, scope.row, scope.$index)"
+              @confirm="btnItem.onClick && btnItem.onClick(scope.row, scope.$index)"
             >
               <template #reference>
                 <el-button
@@ -112,7 +108,7 @@ defineExpose({
               link
               v-else
               :disabled="typeof btnItem.isDisabled === 'function' && btnItem.isDisabled(scope.row, scope.$index)"
-              @click="onListener(btnItem.listener, scope.row, scope.$index)"
+              @click="btnItem.onClick && btnItem.onClick(scope.row, scope.$index)"
               >{{ btnItem.tip }}</el-button
             >
           </div>

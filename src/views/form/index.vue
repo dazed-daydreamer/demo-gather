@@ -15,85 +15,66 @@ const form = reactive({
 const tableData = reactive([
   {
     userName: '张三',
-    userCode: '001'
+    userCode: '001',
+    taskAmount: 10,
+    taskCount: 0
   },
   {
     userName: '李四',
-    userCode: '002'
+    userCode: '002',
+    taskAmount: 0,
+    taskCount: 0
   },
   {
     userName: '王五',
-    userCode: '003'
+    userCode: '003',
+    taskAmount: 0,
+    taskCount: 0
   },
   {
     userName: '赵六',
-    userCode: '004'
+    userCode: '004',
+    taskAmount: 5,
+    taskCount: 0
   },
   {
     userName: '钱七',
-    userCode: '005'
+    userCode: '005',
+    taskAmount: 0,
+    taskCount: 0
   },
   {
     userName: '孙八',
-    userCode: '006'
+    userCode: '006',
+    taskAmount: 0,
+    taskCount: 0
   },
   {
     userName: '周九',
-    userCode: '007'
+    userCode: '007',
+    taskAmount: 2,
+    taskCount: 0
   },
   {
     userName: '吴十',
-    userCode: '008'
+    userCode: '008',
+    taskAmount: 0,
+    taskCount: 0
   },
   {
     userName: '郑十一',
-    userCode: '009'
+    userCode: '009',
+    taskAmount: 0,
+    taskCount: 0
   },
   {
     userName: '王十二',
-    userCode: '010'
-  },
-  {
-    userName: '李十三',
-    userCode: '011'
-  },
-  {
-    userName: '张十四',
-    userCode: '012'
-  },
-  {
-    userName: '赵十五',
-    userCode: '013'
-  },
-  {
-    userName: '钱十六',
-    userCode: '014'
-  },
-  {
-    userName: '孙十七',
-    userCode: '015'
-  },
-  {
-    userName: '周十八',
-    userCode: '016'
-  },
-  {
-    userName: '吴十九',
-    userCode: '017'
-  },
-  {
-    userName: '郑二十',
-    userCode: '018'
-  },
-  {
-    userName: '王二十一',
-    userCode: '019'
-  },
-  {
-    userName: '李二十二',
-    userCode: '020'
+    userCode: '010',
+    taskAmount: 1,
+    taskCount: 0
   }
 ])
+const isDisabled = ref(false)
 
 const clickDelete = (index: number) => {
   tableData.splice(index, 1)
@@ -123,7 +104,7 @@ const onFormConfirm = async () => {
       <page-header-form :model="form" ref="headerFormRef"></page-header-form>
     </template>
     <template #main>
-      <page-main-table :data="tableData" @clickDelete="clickDelete"></page-main-table>
+      <page-main-table :data="tableData" @clickDelete="clickDelete" :is-disabled="isDisabled"></page-main-table>
     </template>
   </custom-add-page>
 </template>

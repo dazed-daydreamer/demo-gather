@@ -1,5 +1,13 @@
 <script lang="ts" setup>
+import { tr } from 'element-plus/es/locale'
+
 const emit = defineEmits(['clickDelete'])
+const props = defineProps({
+  isDisabled: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const tableColumn = [
   {
@@ -15,16 +23,27 @@ const tableColumn = [
   {
     dataKey: 'taskAmount',
     title: '任务金额',
+    editName: 'CustomInputNumber',
+    formatter: (row: any) => {
+      return row.taskAmount.toFixed(2)
+    },
     width: 200
   },
   {
     dataKey: 'taskCount',
     title: '任务数量',
+    editName: 'CustomInputNumber',
+    isRequired: true,
     width: 200
   },
   {
     dataKey: 'taskWay',
     title: '任务方式',
+    editName: 'CustomSelect',
+    isRequired: true,
+    editProps: {
+      dict: 'way'
+    },
     width: 200
   },
   {
@@ -35,6 +54,7 @@ const tableColumn = [
     btnList: [
       {
         tip: '详情',
+        isDisabled: () => props.isDisabled,
         onClick: (data: any) => clickCheck(data)
       },
       {
