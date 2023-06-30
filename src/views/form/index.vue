@@ -76,8 +76,21 @@ const tableData = reactive([
 ])
 const isDisabled = ref(false)
 
-const clickDelete = (index: number) => {
+const clickTableDelete = (index: number) => {
   tableData.splice(index, 1)
+}
+
+const clickTableAdd = () => {
+  tableData.push({
+    userName: '',
+    userCode: '',
+    taskAmount: 0,
+    taskCount: 0
+  })
+  ElMessage({
+    message: '添加一条数据',
+    type: 'success'
+  })
 }
 
 const onFormConfirm = async () => {
@@ -104,7 +117,12 @@ const onFormConfirm = async () => {
       <page-header-form :model="form" ref="headerFormRef"></page-header-form>
     </template>
     <template #main>
-      <page-main-table :data="tableData" @clickDelete="clickDelete" :is-disabled="isDisabled"></page-main-table>
+      <page-main-table
+        :data="tableData"
+        @clickDelete="clickTableDelete"
+        @click-add="clickTableAdd"
+        :is-disabled="isDisabled"
+      ></page-main-table>
     </template>
   </custom-add-page>
 </template>

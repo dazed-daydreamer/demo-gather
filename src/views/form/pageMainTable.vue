@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { tr } from 'element-plus/es/locale'
-
-const emit = defineEmits(['clickDelete'])
+const emit = defineEmits(['clickDelete', 'clickAdd'])
 const props = defineProps({
   isDisabled: {
     type: Boolean,
@@ -72,7 +70,7 @@ const clickCheck = (data: any) => {
 </script>
 
 <template>
-  <custom-virtualized-table :table-column="tableColumn"></custom-virtualized-table>
+  <custom-virtualized-table :table-column="tableColumn" @click-add="emit('clickAdd')"></custom-virtualized-table>
 </template>
 
 <style lang="scss" scoped></style>

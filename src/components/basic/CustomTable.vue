@@ -10,6 +10,18 @@ defineProps({
   height: {
     type: String,
     default: '100%'
+  },
+  emptyDescription: {
+    type: String,
+    default: '暂无数据'
+  },
+  emptyImage: {
+    type: String,
+    default: ''
+  },
+  emptyImageSize: {
+    type: Number || null,
+    default: null
   }
 })
 
@@ -61,7 +73,6 @@ defineExpose({
 
 <template>
   <el-table
-    :class="{ 'flex-1': height == '100%' }"
     :border="true"
     :height="height"
     ref="tableRef"
@@ -116,6 +127,10 @@ defineExpose({
         <div v-if="item.dict">{{ getDictName(item.dict, scope.row[item.prop]) }}</div>
       </template>
     </el-table-column>
+
+    <template #empty>
+      <el-empty :description="emptyDescription" :image="emptyImage" :image-size="emptyImageSize"></el-empty>
+    </template>
   </el-table>
 </template>
 
@@ -127,7 +142,7 @@ defineExpose({
     color: #606266;
     padding: 0;
     box-sizing: content-box;
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
@@ -135,7 +150,7 @@ defineExpose({
   td {
     height: 40px;
     padding: 0;
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
@@ -150,6 +165,6 @@ defineExpose({
 }
 
 .button-font-size {
-  font-size: 13px;
+  font-size: 12px;
 }
 </style>

@@ -18,7 +18,7 @@ const props = defineProps({
   },
   height: {
     type: Number,
-    default: 400
+    default: 330
   },
   headerHeight: {
     type: Number,
@@ -31,8 +31,30 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
+  },
+  isAddButtonShow: {
+    type: Boolean,
+    default: true
+  },
+  addButtonText: {
+    type: String,
+    default: '添加'
+  },
+  emptyDescription: {
+    type: String,
+    default: '暂无数据'
+  },
+  emptyImage: {
+    type: String,
+    default: ''
+  },
+  emptyImageSize: {
+    type: Number || null,
+    default: null
   }
 })
+
+const emit = defineEmits(['clickAdd'])
 
 const tableClass = `custom-virtualized-table-${uuidv4()}`
 const temTableColumn = computed(() => {
@@ -107,6 +129,16 @@ const getDictName = (dictKey: string, value: any): string => {
 </script>
 
 <template>
+  <custom-button
+    v-if="isAddButtonShow && !disabled"
+    class="mb-[15px] w-full border-dashed custom-virtualized-table-add-button"
+    @click="emit('clickAdd')"
+  >
+    <el-icon size="12">
+      <i-ep-plus />
+    </el-icon>
+    <span>{{ addButtonText }}</span>
+  </custom-button>
   <div class="custom-virtualized-table w-full">
     <el-auto-resizer>
       <template #default="{ width: resizerWidth }">
@@ -175,6 +207,9 @@ const getDictName = (dictKey: string, value: any): string => {
               }}
             </div>
           </template>
+          <template #empty>
+            <el-empty :description="emptyDescription" :image="emptyImage" :image-size="emptyImageSize"></el-empty>
+          </template>
         </el-table-v2>
       </template>
     </el-auto-resizer>
@@ -191,7 +226,7 @@ const getDictName = (dictKey: string, value: any): string => {
       .el-table-v2__header-cell {
         padding: 0 16px;
         background-color: transparent;
-        font-size: 13px;
+        font-size: 12px;
         color: #606266;
         border-right: 1px solid var(--el-border-color-lighter);
       }
@@ -200,14 +235,18 @@ const getDictName = (dictKey: string, value: any): string => {
     .el-table-v2__body {
       .el-table-v2__row-cell {
         padding: 0 16px;
-        font-size: 13px;
+        font-size: 12px;
       }
     }
   }
 }
+.custom-virtualized-table-add-button {
+  color: var(--el-color-primary);
+  border-color: var(--el-color-primary);
+}
 
 .button-font-size {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .is-required::before {

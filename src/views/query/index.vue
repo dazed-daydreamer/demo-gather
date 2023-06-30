@@ -68,28 +68,38 @@ const tableColumn = [
   }
 ]
 
-const currentPage = ref(1)
+const pageIndex = ref(1)
 const pageSize = ref(10)
+const total = ref(0)
 const form = reactive(initForm())
-const tableData = reactive([
-  {
-    name: '活动名称',
-    region: '2',
-    startData: '2021-09-01',
-    endData: '2021-09-30',
-    delivery: '1',
-    id: 1
-  }
-])
+const tableData = reactive<any[]>([])
 
 const clickQuery = async () => {
-  ElMessage.success('查询成功')
+  getQueryList()
 }
 
 const clickReset = () => {
   Object.assign(form, initForm())
-  currentPage.value = 1
+  pageIndex.value = 1
+  getQueryList()
   ElMessage.success('重置成功')
+}
+
+const getQueryList = async () => {
+  const res = []
+  for (let i = 0; i < 20; i++) {
+    res.push({
+      id: i + 1,
+      name: `活动${i + 1}`,
+      region: i % 2 === 0 ? '1' : '2',
+      delivery: i % 3 === 0 ? '1' : '0',
+      startData: `2022-01-${i + 1}`,
+      endData: `2022-01-${i + 10 - (i % 10)}`
+    })
+  }
+  tableData.splice(0, res.length, ...res)
+  total.value = tableData.length
+  ElMessage.success('获取列表成功')
 }
 
 const clickAdd = (row?: any) => {
@@ -119,6 +129,10 @@ const exportConfig = reactive({
 const importConfig = reactive({
   isShow: true
 })
+
+onMounted(() => {
+  getQueryList()
+})
 </script>
 
 <template>
@@ -136,9 +150,14 @@ const importConfig = reactive({
       <custom-toolbar :add-config="addConfig" :export-config="exportConfig" :import-config="importConfig"></custom-toolbar>
     </template>
     <template #main>
-      <custom-table v-model:current-page="currentPage" v-model:page-size="pageSize" :table-column="tableColumn" :data="tableData">
-      </custom-table>
-      <custom-pagination></custom-pagination>
+      <custom-table :table-column="tableColumn" :data="tableData"> </custom-table>
+      <custom-pagination
+        v-model:current-page="pageIndex"
+        v-model:page-size="pageSize"
+        :total="total"
+        @size-change="getQueryList"
+        @current-change="getQueryList"
+      ></custom-pagination>
     </template>
   </custom-query-page>
 </template>

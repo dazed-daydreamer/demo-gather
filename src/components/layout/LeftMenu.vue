@@ -1,20 +1,36 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { Icon } from '@iconify/vue'
+const defaultActive = ref('')
+const router = useRouter()
+onMounted(() => {
+  setTimeout(() => {
+    defaultActive.value = router.currentRoute.value.path
+  }, 800)
+})
+
+const menuList = [
+  {
+    path: '/',
+    icon: 'ep-mostly-cloudy'
+  },
+  {
+    path: '/monitoring',
+    icon: 'ep-monitor'
+  },
+  {
+    path: '/query',
+    icon: 'ep-coin'
+  }
+]
+</script>
 
 <template>
-  <el-menu router default-active="/">
-    <el-menu-item index="/">
+  <el-menu router :default-active="defaultActive">
+    <el-menu-item :index="item.path" v-for="item in menuList" :key="item.path">
       <template #title>
-        <el-icon class="iconfont icon-zhuye"></el-icon>
-      </template>
-    </el-menu-item>
-    <el-menu-item index="/monitoring">
-      <template #title>
-        <el-icon> <i-ep-expand /></el-icon>
-      </template>
-    </el-menu-item>
-    <el-menu-item index="/query">
-      <template #title>
-        <el-icon> <i-ep-expand /></el-icon>
+        <el-icon>
+          <icon :icon="item.icon"></icon>
+        </el-icon>
       </template>
     </el-menu-item>
   </el-menu>

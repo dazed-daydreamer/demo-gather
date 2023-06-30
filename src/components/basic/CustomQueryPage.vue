@@ -21,6 +21,5 @@ defineProps({
 <style lang="scss" scoped>
 .custom-query-page {
   padding: 20px;
-  height: calc(100vh - 60px);
 }
 </style>

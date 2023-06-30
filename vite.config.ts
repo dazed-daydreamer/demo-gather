@@ -17,7 +17,8 @@ export default defineConfig({
         ElementPlusResolver(),
         // 自动导入图标组件
         IconsResolver({
-          prefix: 'Icon'
+          prefix: 'i',
+          enabledCollections: ['ep']
         })
       ],
       dts: './src/types/auto-imports.d.ts',
