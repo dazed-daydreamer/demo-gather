@@ -3,6 +3,7 @@ import type { FormInstance } from 'element-plus'
 
 const attrs = useAttrs()
 provide('form', attrs.model)
+provide('disabled', attrs.disabled)
 
 const formRef = ref<FormInstance | null>(null)
 

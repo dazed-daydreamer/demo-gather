@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <el-input-number :min="min" :precision="precision" controls-position="right" clearable style="width: 100%" />
+  <el-input-number :min="min" :precision="precision" controls-position="right" clearable style="width: 100%" v-bind="$attrs" />
 </template>
 
 <style lang="scss" scoped></style>

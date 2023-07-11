@@ -2,7 +2,7 @@
 import type { ElTable } from 'element-plus'
 import { useMapStore } from '@/store/map'
 
-defineProps({
+const props = defineProps({
   tableColumn: {
     type: Array as () => { [key: string]: any }[],
     default: () => []
@@ -22,31 +22,35 @@ defineProps({
   emptyImageSize: {
     type: Number || null,
     default: null
+  },
+  isSelection: {
+    type: Boolean,
+    default: true
   }
 })
 
 const emit = defineEmits(['row-click', 'on-listener'])
 const mapStore = useMapStore()
 
-const tableRef = ref<InstanceType<typeof ElTable> | null>()
+const tableRef = ref()
 
 const toggleRowSelection = (value: Array<object> | object, isSelect?: boolean | undefined) => {
-  if (!tableRef.value || !value) return
+  if (!tableRef.value || !value || !props.isSelection) return
   if (Array.isArray(value)) {
     value.forEach((item) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      tableRef.value?.toggleRowSelection(item, isSelect)
+      tableRef.value?.toggleRowSelection?.(item, isSelect)
     })
   } else {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    tableRef.value?.toggleRowSelection(value, isSelect)
+    tableRef.value?.toggleRowSelection?.(value, isSelect)
   }
 }
 
-const onRowClick = (row: object, column: object, event: Event) => {
-  toggleRowSelection(row)
+const clickRow = (row: object, column: object, event: Event) => {
+  if (props.isSelection) {
+    toggleRowSelection(row)
+  }
   emit('row-click', row, column, event)
 }
 
@@ -76,11 +80,12 @@ defineExpose({
     :border="true"
     :height="height"
     ref="tableRef"
-    @row-click="onRowClick"
+    @row-click="clickRow"
     :row-class-name="() => 'custom-table-row'"
     :header-row-class-name="() => 'custom-table-header-row'"
+    stripe
   >
-    <el-table-column type="selection" width="55" align="center" fixed="left" />
+    <el-table-column type="selection" width="55" align="center" fixed="left" v-if="isSelection" />
     <el-table-column label="序号" width="80" type="index" align="center" fixed="left"></el-table-column>
     <el-table-column
       :prop="item.prop"

@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     CustomFormItem: typeof import('./../components/form/CustomFormItem.vue')['default']
     CustomInput: typeof import('./../components/form/CustomInput.vue')['default']
     CustomInputNumber: typeof import('./../components/form/CustomInputNumber.vue')['default']
+    CustomInputPopover: typeof import('./../components/form/CustomInputPopover.vue')['default']
     CustomPagination: typeof import('./../components/basic/CustomPagination.vue')['default']
     CustomQueryHeader: typeof import('./../components/basic/CustomQueryHeader.vue')['default']
     CustomQueryPage: typeof import('./../components/basic/CustomQueryPage.vue')['default']
@@ -45,6 +46,7 @@ declare module '@vue/runtime-core' {
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElPopconfirm: typeof import('element-plus/es')['ElPopconfirm']
+    ElPopover: typeof import('element-plus/es')['ElPopover']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElTable: typeof import('element-plus/es')['ElTable']
@@ -52,6 +54,7 @@ declare module '@vue/runtime-core' {
     ElTableV2: typeof import('element-plus/es')['ElTableV2']
     EmtpyTable: typeof import('./../components/basic/EmtpyTable.vue')['default']
     IEpAdd: typeof import('~icons/ep/add')['default']
+    IEpCircleClose: typeof import('~icons/ep/circle-close')['default']
     IEpCoin: typeof import('~icons/ep/coin')['default']
     IEpExpand: typeof import('~icons/ep/expand')['default']
     IEpMonitor: typeof import('~icons/ep/monitor')['default']
@@ -62,5 +65,8 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TopHeader: typeof import('./../components/layout/TopHeader.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

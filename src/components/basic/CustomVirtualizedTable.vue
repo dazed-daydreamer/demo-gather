@@ -233,6 +233,11 @@ const getDictName = (dictKey: string, value: any): string => {
     }
 
     .el-table-v2__body {
+      .el-table-v2__row:nth-of-type(even) {
+        .el-table-v2__row-cell {
+          background-color: var(--el-fill-color-lighter);
+        }
+      }
       .el-table-v2__row-cell {
         padding: 0 16px;
         font-size: 12px;

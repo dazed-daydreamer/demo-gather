@@ -2,13 +2,15 @@
 import PageHeaderForm from './pageHeaderForm.vue'
 import PageMainTable from './pageMainTable.vue'
 
-const headerFormRef = ref<InstanceType<typeof PageHeaderForm> | null>(null)
-const form = reactive({
+const headerFormRef = ref()
+const formData = reactive({
   name: '',
   region: '',
   date: '',
   delivery: '',
   desc: '',
+  departmentId: 'test-002',
+  departmentName: '人力资源部',
   price: 0
 })
 
@@ -94,8 +96,9 @@ const clickTableAdd = () => {
 }
 
 const onFormConfirm = async () => {
-  const valid = await headerFormRef.value?.formRef?.validate()
+  const valid = await headerFormRef.value?.formRef?.validate?.()
   if (valid) {
+    console.log(formData)
     ElMessage({
       message: '提交成功',
       type: 'success'
@@ -114,7 +117,7 @@ const onFormConfirm = async () => {
       </bill-text>
     </template>
     <template #header>
-      <page-header-form :model="form" ref="headerFormRef"></page-header-form>
+      <page-header-form :model="formData" ref="headerFormRef" :is-disabled="isDisabled"></page-header-form>
     </template>
     <template #main>
       <page-main-table

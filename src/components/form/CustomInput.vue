@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <el-input :placeholder="placeholder" clearable></el-input>
+  <el-input :placeholder="placeholder" clearable v-bind="$attrs"></el-input>
 </template>
 
 <style lang="scss" scoped></style>
