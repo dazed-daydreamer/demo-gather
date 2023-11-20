@@ -40,6 +40,7 @@ defineExpose({
       edit-name="CustomInputPopover"
       label="活动部门"
       prop="departmentId"
+      is-multiple
       :edit-props="{
         url: org.url,
         method: org.method,

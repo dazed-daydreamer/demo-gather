@@ -117,7 +117,6 @@ const handlePopoverShow = () => {
 }
 
 const clickRow = (row: any, column: object, event: Event) => {
-  // toggleRowSelection(row)
   inputValue.value = row[props.editProps.modelProp.label]
   popoverRef?.value?.hide?.()
   emit('update:modelValue', row[props.editProps.modelProp.key])

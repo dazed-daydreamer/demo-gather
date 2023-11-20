@@ -3,6 +3,7 @@ import CustomInputNumber from '../components/form/CustomInputNumber.vue'
 import CustomSelect from '../components/form/CustomSelect.vue'
 import CustomDatePicker from '../components/form/CustomDatePicker.vue'
 import CustomInputPopover from '@/components/form/CustomInputPopover.vue'
+import CustomInputDialog from '@/components/form/CustomInputDialog.vue'
 
 export const components = [
   {
@@ -24,6 +25,10 @@ export const components = [
   {
     name: 'CustomInputPopover',
     component: CustomInputPopover
+  },
+  {
+    name: 'CustomInputDialog',
+    component: CustomInputDialog
   }
 ]
 

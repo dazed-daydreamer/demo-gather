@@ -9,8 +9,8 @@ const formData = reactive({
   date: '',
   delivery: '',
   desc: '',
-  departmentId: 'test-002',
-  departmentName: '人力资源部',
+  departmentId: '',
+  departmentName: '',
   price: 0
 })
 

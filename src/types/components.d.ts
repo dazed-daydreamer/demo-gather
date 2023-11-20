@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     CustomForm: typeof import('./../components/form/CustomForm.vue')['default']
     CustomFormItem: typeof import('./../components/form/CustomFormItem.vue')['default']
     CustomInput: typeof import('./../components/form/CustomInput.vue')['default']
+    CustomInputDialog: typeof import('./../components/form/CustomInputDialog.vue')['default']
     CustomInputNumber: typeof import('./../components/form/CustomInputNumber.vue')['default']
     CustomInputPopover: typeof import('./../components/form/CustomInputPopover.vue')['default']
     CustomPagination: typeof import('./../components/basic/CustomPagination.vue')['default']
