@@ -50,8 +50,8 @@ const emit = defineEmits(['row-click', 'update:modelValue', 'change'])
 const pageIndex = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
-const formData = reactive<any>({})
-const tableData = reactive<any>([])
+const formData = ref<any>({})
+const tableData = ref<any>([])
 const loading = ref(false)
 const popoverRef = ref()
 const inputValue = ref('')
@@ -103,7 +103,7 @@ const getQueryList = () => {
       name: '销售部'
     }
   ]
-  tableData.splice(0, tableData.length, ...data)
+  tableData.value = [...data]
   total.value = data.length
   setTimeout(() => {
     loading.value = false

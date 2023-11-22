@@ -5,7 +5,6 @@ defineOptions({
   name: 'Home'
 })
 
-let throttled = reactive<any>(null)
 const chartRefOne = ref<InstanceType<typeof CustomEchart> | null>(null)
 const chartRefTwo = ref<InstanceType<typeof CustomEchart> | null>(null)
 const chartRefThree = ref<InstanceType<typeof CustomEchart> | null>(null)
@@ -15,24 +14,24 @@ const chartRefSix = ref<InstanceType<typeof CustomEchart> | null>(null)
 const chartRefSeven = ref<InstanceType<typeof CustomEchart> | null>(null)
 const chartRefEight = ref<InstanceType<typeof CustomEchart> | null>(null)
 const chartRefNine = ref<InstanceType<typeof CustomEchart> | null>(null)
+const throttled = _.throttle(() => {
+  const chartRefArs = [
+    chartRefOne,
+    chartRefTwo,
+    chartRefThree,
+    chartRefFour,
+    chartRefFive,
+    chartRefSix,
+    chartRefSeven,
+    chartRefEight,
+    chartRefNine
+  ]
+  for (const chartRef of chartRefArs) {
+    chartRef.value && chartRef.value.resize()
+  }
+}, 600)
 
 onMounted(() => {
-  throttled = _.throttle(() => {
-    const chartRefArs = [
-      chartRefOne,
-      chartRefTwo,
-      chartRefThree,
-      chartRefFour,
-      chartRefFive,
-      chartRefSix,
-      chartRefSeven,
-      chartRefEight,
-      chartRefNine
-    ]
-    for (const chartRef of chartRefArs) {
-      chartRef.value && chartRef.value.resize()
-    }
-  }, 600)
   window.onresize = throttled
 })
 

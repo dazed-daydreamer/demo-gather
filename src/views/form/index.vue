@@ -3,7 +3,7 @@ import PageHeaderForm from './pageHeaderForm.vue'
 import PageMainTable from './pageMainTable.vue'
 
 const headerFormRef = ref()
-const formData = reactive({
+const formData = ref({
   name: '',
   region: '',
   date: '',
@@ -14,7 +14,7 @@ const formData = reactive({
   price: 0
 })
 
-const tableData = reactive([
+const tableData = ref([
   {
     userName: '张三',
     userCode: '001',
@@ -79,11 +79,11 @@ const tableData = reactive([
 const isDisabled = ref(false)
 
 const clickTableDelete = (index: number) => {
-  tableData.splice(index, 1)
+  tableData.value.splice(index, 1)
 }
 
 const clickTableAdd = () => {
-  tableData.push({
+  tableData.value.push({
     userName: '',
     userCode: '',
     taskAmount: 0,
@@ -98,7 +98,7 @@ const clickTableAdd = () => {
 const onFormConfirm = async () => {
   const valid = await headerFormRef.value?.formRef?.validate?.()
   if (valid) {
-    console.log(formData)
+    console.log(formData.value)
     ElMessage({
       message: '提交成功',
       type: 'success'

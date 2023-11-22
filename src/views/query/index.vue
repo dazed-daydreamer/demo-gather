@@ -71,15 +71,15 @@ const tableColumn = [
 const pageIndex = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
-const form = reactive(initForm())
-const tableData = reactive<any[]>([])
+const form = ref(initForm())
+const tableData = ref<any[]>([])
 
 const clickQuery = async () => {
   getQueryList()
 }
 
 const clickReset = () => {
-  Object.assign(form, initForm())
+  form.value = initForm()
   pageIndex.value = 1
   getQueryList()
   ElMessage.success('重置成功')
@@ -97,8 +97,8 @@ const getQueryList = async () => {
       endData: `2022-01-${i + 10 - (i % 10)}`
     })
   }
-  tableData.splice(0, res.length, ...res)
-  total.value = tableData.length
+  tableData.value = [...res]
+  total.value = tableData.value.length
   ElMessage.success('获取列表成功')
 }
 
@@ -113,20 +113,20 @@ const clickAdd = (row?: any) => {
 }
 
 const clickDelete = (index: number) => {
-  tableData.splice(index, 1)
+  tableData.value.splice(index, 1)
   ElMessage.success('删除成功')
 }
 
-const addConfig = reactive({
+const addConfig = ref({
   isShow: true,
   callBack: clickAdd
 })
 
-const exportConfig = reactive({
+const exportConfig = ref({
   isShow: true
 })
 
-const importConfig = reactive({
+const importConfig = ref({
   isShow: true
 })
 

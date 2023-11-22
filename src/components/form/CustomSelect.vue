@@ -27,7 +27,7 @@ const props = defineProps({
   }
 })
 
-const localOptions = reactive<any[]>([])
+const localOptions = ref<any[]>([])
 
 onMounted(() => {
   if (props.dict) {
@@ -39,7 +39,7 @@ watch(
   () => props.options,
   (val) => {
     if (props.dict) return
-    localOptions.splice(0, localOptions.length, ...val)
+    localOptions.value = val
   },
   {
     immediate: true
@@ -57,9 +57,9 @@ watch(
 const getDictMapToSelectList = () => {
   const dictMap = useMapStore()[props.dict]
   if (Array.isArray(dictMap) && dictMap.length > 0) {
-    localOptions.splice(0, localOptions.length, ...dictMap)
+    localOptions.value = [...dictMap]
   } else {
-    localOptions.splice(0, localOptions.length)
+    localOptions.value = []
   }
 }
 </script>

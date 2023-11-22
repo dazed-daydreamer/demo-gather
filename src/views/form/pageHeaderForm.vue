@@ -7,7 +7,7 @@ defineProps({
   }
 })
 const attrs = useAttrs()
-const formData = reactive(attrs.model as any)
+const formData = ref(attrs.model as any)
 const formRef = ref()
 const regionList = [
   {
@@ -20,12 +20,12 @@ const regionList = [
   }
 ]
 
-const rules = reactive({
+const rules = ref({
   name: [{ required: true, message: '请输入活动名称', trigger: 'change' }]
 })
 
 const onDepartmentChange = (val: any) => {
-  formData.departmentName = val?.name || ''
+  formData.value.departmentName = val?.name || ''
 }
 
 defineExpose({

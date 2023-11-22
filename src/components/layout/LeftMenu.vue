@@ -2,11 +2,6 @@
 import { Icon } from '@iconify/vue'
 const defaultActive = ref('')
 const router = useRouter()
-onMounted(() => {
-  setTimeout(() => {
-    defaultActive.value = router.currentRoute.value.path
-  }, 800)
-})
 
 const menuList = [
   {
@@ -22,6 +17,20 @@ const menuList = [
     icon: 'ep-coin'
   }
 ]
+
+watch(
+  () => router.currentRoute.value.path,
+  (path) => {
+    const matchItem = menuList.find((item) => item.path === path)
+    if (matchItem) {
+      defaultActive.value = matchItem.path
+    }
+    console.log(matchItem)
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <template>
